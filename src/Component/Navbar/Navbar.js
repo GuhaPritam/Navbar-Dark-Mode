@@ -82,18 +82,18 @@ const Navbar = () => {
               <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1rem]`}>Contact</a>
             </div>
           </div>
-          <div className=''>
+          <div className='flex gap-2'>
+            <div className="-mr-2 flex md:hidden">
+              <button onClick={toggleNavbar} className="text-gray-300 hover:text-white inline-flex p-2 rounded-md focus:outline-none">
+                <svg className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+                <svg className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
             <MaterialUISwitch onClick={toggleMode} />
-          </div>
-          <div className="-mr-2 flex md:hidden">
-            <button onClick={toggleNavbar} className="text-gray-300 hover:text-white inline-flex p-2 rounded-md focus:outline-none">
-              <svg className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-              </svg>
-              <svg className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
