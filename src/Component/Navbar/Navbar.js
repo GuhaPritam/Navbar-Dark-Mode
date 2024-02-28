@@ -72,14 +72,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <a href="/" className="text-white font-bold text-lg">Logo</a>
+            <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} text-[1.5rem] font-bold text-lg`}>Logo</a>
           </div>
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
-              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1rem]`}>Home</a>
-              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1rem]`}>About</a>
-              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1rem]`}>Services</a>
-              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1rem]`}>Contact</a>
+              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1.2rem]`}>Home</a>
+              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1.2rem]`}>About</a>
+              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1.2rem]`}>Services</a>
+              <a href="/" className={`${mode === 'light' ? 'text-black' : 'text-white'} px-3 py-2 rounded-md text-sm font-[700] text-[1.2rem]`}>Contact</a>
             </div>
           </div>
           <div className='flex gap-2'>
