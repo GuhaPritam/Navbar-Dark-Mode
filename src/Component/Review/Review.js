@@ -47,17 +47,17 @@ const ReviewForm = () => {
                         <form className="space-y-4" onSubmit={handleSubmit}>
                             <div>
                                 <label className="block mb-1 text-[1.3rem] font-[500]">First Name:</label>
-                                <input onChange={handleFirstNameChange} value={firstName} id="firstName" className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
+                                <input onChange={handleFirstNameChange} value={firstName} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                             </div>
 
                             <div>
                                 <label className="block mb-1 text-[1.3rem] font-[500]">Last Name:</label>
-                                <input onChange={handleLastNameChange} value={lastName} id="lastName" className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
+                                <input onChange={handleLastNameChange} value={lastName} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                             </div>
 
                             <div>
                                 <label className="block mb-1 text-[1.3rem] font-[500]">Review:</label>
-                                <textarea onChange={handleReviewChange} value={review} id="review" className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
+                                <textarea onChange={handleReviewChange} value={review} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                             </div>
 
                             <div>
