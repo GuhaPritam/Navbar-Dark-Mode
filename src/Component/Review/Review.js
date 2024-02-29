@@ -1,30 +1,31 @@
 import React, { useState } from 'react';
 
 const ReviewForm = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [review, setReview] = useState('');
+    const [formData, setFormData] = useState({firstName: '', lastName: '', review: ''});
+    // const [firstName, setFirstName] = useState('');
+    // const [lastName, setLastName] = useState('');
+    // const [review, setReview] = useState('');
     const [isFormOpen, setIsFormOpen] = useState(false);
 
-    const handleFirstNameChange = (event) => {
-        setFirstName(event.target.value);
+    const handleChange = (event) => {
+        setFormData(event.target.value);
     };
 
-    const handleLastNameChange = (event) => {
-        setLastName(event.target.value);
-    };
+    // const handleLastNameChange = (event) => {
+    //     setLastName(event.target.value);
+    // };
 
-    const handleReviewChange = (event) => {
-        setReview(event.target.value);
-    };
+    // const handleReviewChange = (event) => {
+    //     setReview(event.target.value);
+    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', { firstName, lastName, review });
+        console.log('Form submitted:', formData);
 
-        setFirstName('');
-        setLastName('');
-        setReview('');
+        setFormData({ firstName: '', lastName: '', review: '' });
+        // setLastName('');
+        // setReview('');
         setIsFormOpen(false);
     };
 
@@ -47,17 +48,17 @@ const ReviewForm = () => {
                         <form className="space-y-4" onSubmit={handleSubmit}>
                             <div>
                                 <label className="block mb-1 text-[1.3rem] font-[500]">First Name:</label>
-                                <input onChange={handleFirstNameChange} value={firstName} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
+                                <input onChange={handleChange} value={formData.firstName} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                             </div>
 
                             <div>
                                 <label className="block mb-1 text-[1.3rem] font-[500]">Last Name:</label>
-                                <input onChange={handleLastNameChange} value={lastName} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
+                                <input onChange={handleChange} value={formData.lastName} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                             </div>
 
                             <div>
                                 <label className="block mb-1 text-[1.3rem] font-[500]">Review:</label>
-                                <textarea onChange={handleReviewChange} value={review} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
+                                <textarea onChange={handleChange} value={formData.review} className="w-full px-4 py-2 border-[0.2rem] border-gray-500 rounded-md focus:outline-none focus:ring focus:ring-blue-500" required />
                             </div>
 
                             <div>
