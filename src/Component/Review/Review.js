@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 const InputForm = () => {
-    const [formData, setFormData] = useState({ user: '', time: '', reason: '', location: '' });
+    const [formData, setFormData] = useState({ user: '', reason: '', location: '' });
+    const [submittedData, setSubmittedData] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -13,32 +14,43 @@ const InputForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        setFormData({ user: '', time: '', reason: '', location: '' });
+        const currentTime = new Date().toLocaleTimeString();
+        console.log("Current Time: ", currentTime, formData);
+        setSubmittedData({ ...formData, time: currentTime });
+        setFormData({ user: '', reason: '', location: '' });
     };
 
     return (
-        <form className="max-w-md mx-auto mt-8 border-[0.5rem] border-gray-500 p-3" onSubmit={handleSubmit}>
-            <div className="mb-4">
-                <label htmlFor="user" className="block mb-2 border-[0.1rem] border-gray-500 p-3">User:</label>
-                <input type="text" id="user" name="user" value={formData.user} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
+        <div className="flex">
+            <div className="max-w-md mx-auto mt-8 px-4">
+                <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div className="mb-4">
+                        <label htmlFor="user" className="block text-gray-700 text-sm font-bold mb-2">User:</label>
+                        <input type="text" id="user" name="user" value={formData.user} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"/>
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="reason" className="block text-gray-700 text-sm font-bold mb-2">Reason:</label>
+                        <input type="text" id="reason" name="reason" value={formData.reason} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"/>
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+                        <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"/>
+                    </div>
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
+                        Submit
+                    </button>
+                </form>
             </div>
-            <div className="mb-4">
-                <label htmlFor="time" className="block mb-2 border-[0.1rem] border-gray-500 p-3">Time:</label>
-                <input type="text" id="time" name="time" value={formData.time} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
-            </div>
-            <div className="mb-4">
-                <label htmlFor="reason" className="block mb-2 border-[0.1rem] border-gray-500 p-3">Reason:</label>
-                <input type="text" id="reason" name="reason" value={formData.reason} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
-            </div>
-            <div className="mb-4">
-                <label htmlFor="location" className="block mb-2 border-[0.1rem] border-gray-500 p-3">Location:</label>
-                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
-            </div>
-            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
-                Submit
-            </button>
-        </form>
+            {submittedData && (
+                <div className="bg-gray-200 p-4">
+                    <h2 className="text-lg font-bold mb-2">Submitted Data:</h2>
+                    <p>User: {submittedData.user}</p>
+                    <p>Reason: {submittedData.reason}</p>
+                    <p>Location: {submittedData.location}</p>
+                    <p>Time: {submittedData.time}</p>
+                </div>
+            )}
+        </div>
     );
 };
 
