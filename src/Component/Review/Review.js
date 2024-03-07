@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 const InputForm = () => {
-    const [formData, setFormData] = useState({ user: '', reason: '', location: '' });
+    const initialValue = { user: '', reason: '', location: '' }
+    const [formData, setFormData] = useState(initialValue);
     const [submittedData, setSubmittedData] = useState(null);
 
     const handleChange = (e) => {
@@ -17,7 +18,7 @@ const InputForm = () => {
         const currentTime = new Date().toLocaleTimeString();
         console.log("Current Time: ", currentTime, formData);
         setSubmittedData({ ...formData, time: currentTime });
-        setFormData({ user: '', reason: '', location: '' });
+        setFormData(initialValue);
     };
 
     return (
