@@ -16,6 +16,10 @@ const InputForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const currentTime = new Date().toLocaleTimeString();
+        if (!formData.user || !formData.reason || !formData.location) {
+            alert("Please fill in all fields.");
+            return;
+        }
         console.log("Current Time: ", currentTime, formData);
         setSubmittedData({ ...formData, time: currentTime });
         setFormData(initialValue);
@@ -29,15 +33,15 @@ const InputForm = () => {
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <label htmlFor="user" className="block text-gray-700 text-sm font-bold mb-2">User:</label>
-                                <input type="text" id="user" name="user" value={formData.user} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"/>
+                                <input type="text" id="user" name="user" value={formData.user} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="reason" className="block text-gray-700 text-sm font-bold mb-2">Reason:</label>
-                                <input type="text" id="reason" name="reason" value={formData.reason} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"/>
+                                <input type="text" id="reason" name="reason" value={formData.reason} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                             </div>
                             <div className="mb-4">
                                 <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
-                                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"/>
+                                <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                             </div>
                             <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
                                 Submit
