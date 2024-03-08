@@ -4,6 +4,7 @@ const InputForm = () => {
     const initialValue = { user: '', reason: '', location: '' }
     const [formData, setFormData] = useState(initialValue);
     const [submittedData, setSubmittedData] = useState(null);
+    const isFormValid = formData.user && formData.reason && formData.location;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -16,10 +17,6 @@ const InputForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const currentTime = new Date().toLocaleTimeString();
-        if (!formData.user || !formData.reason || !formData.location) {
-            alert("Please fill in all fields.");
-            return;
-        }
         console.log("Current Time: ", currentTime, formData);
         setSubmittedData({ ...formData, time: currentTime });
         setFormData(initialValue);
@@ -43,7 +40,7 @@ const InputForm = () => {
                                 <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
                                 <input type="text" id="location" name="location" value={formData.location} onChange={handleChange} className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" />
                             </div>
-                            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:shadow-outline">
+                            <button type="submit" disabled={!isFormValid} className={`bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md focus:outline-none focus:shadow-outline ${!isFormValid && 'opacity-50 cursor-not-allowed'}`}>
                                 Submit
                             </button>
                         </form>
