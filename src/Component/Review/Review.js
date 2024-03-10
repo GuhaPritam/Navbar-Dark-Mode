@@ -1,9 +1,11 @@
+import { Button } from '@mui/material';
 import React, { useState } from 'react';
 
 const InputForm = () => {
     const initialValue = { user: '', reason: '', location: '' }
     const [formData, setFormData] = useState(initialValue);
-    const [submittedData, setSubmittedData] = useState(null);
+    const [submittedData, setSubmittedData] = useState([]);
+
     const isFormValid = formData.user && formData.reason && formData.location;
 
     const handleChange = (e) => {
@@ -17,9 +19,14 @@ const InputForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const currentTime = new Date().toLocaleTimeString();
-        console.log("Current Time: ", currentTime, formData);
-        setSubmittedData({ ...formData, time: currentTime });
+        const newData = { ...formData, time: currentTime };
+        setSubmittedData([...submittedData, newData]);
         setFormData(initialValue);
+    };
+
+    const handleDelete = (index) => {
+        const updatedData = submittedData.filter((_, i) => i !== index);
+        setSubmittedData(updatedData);
     };
 
     return (
@@ -46,15 +53,20 @@ const InputForm = () => {
                         </form>
                     </div>
                 </div>
-                {submittedData && (
-                    <div className="bg-gray-200 rounded-md px-4 py-2 h-fit">
-                        <h2 className="text-lg font-bold mb-2">Submitted Data:</h2>
-                        <p>User: {submittedData.user}</p>
-                        <p>Reason: {submittedData.reason}</p>
-                        <p>Location: {submittedData.location}</p>
-                        <p>Time: {submittedData.time}</p>
-                    </div>
-                )}
+                <div>
+                    {submittedData.map((data, index) => (
+                        <div key={index} className="bg-gray-200 rounded-md px-4 py-2 mb-4">
+                            <h2 className="text-lg font-bold mb-2">Submitted Data {index + 1}:</h2>
+                            <p>User: {data.user}</p>
+                            <p>Reason: {data.reason}</p>
+                            <p>Location: {data.location}</p>
+                            <p>Time: {data.time}</p>
+                            <Button variant="contained" onClick={() => handleDelete(index)}>
+                                Delete
+                            </Button>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     );
