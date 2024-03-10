@@ -1,10 +1,10 @@
-import Review from "./Component/Review/Review";
+import Navbar from "./Component/Navbar/Navbar";
 
 
 function App() {
   return (
     <div>
-      <Review />
+      <Navbar />
     </div>
   );
 }
