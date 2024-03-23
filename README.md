@@ -2,7 +2,7 @@
 Navbar Dark Mode
 
 ### Project Address:
-["https://navbar-dark-mode-eight.vercel.app/]("https://navbar-dark-mode-eight.vercel.app/)
+[https://navbar-dark-mode-eight.vercel.app/]("https://navbar-dark-mode-eight.vercel.app/)
 
 ## Project Description:
 This website is fully responsive and supports both modes. It's powered by React.js and incorporates various hooks and conditions for functionality.
